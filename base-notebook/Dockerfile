@@ -6,9 +6,6 @@
 # https://hub.docker.com/_/ubuntu/tags?page=1&name=noble
 ARG ROOT_IMAGE=ubuntu:24.04
 
-# Pin the Python version here, or set it to "default"
-ARG PYTHON_VERSION=3.9
-
 FROM $ROOT_IMAGE
 
 LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
@@ -109,6 +106,8 @@ RUN echo "auth requisite pam_deny.so" >> /etc/pam.d/su && \
 
 USER ${NB_UID}
 
+# Pin the Python version here, or set it to "default"
+ARG PYTHON_VERSION=3.9
 
 # Setup work directory for backward-compatibility
 RUN mkdir "/home/${NB_USER}/work" && \
